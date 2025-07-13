@@ -1,0 +1,380 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewpoint" content="with=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/characterPage.css">
+    <title>Origins New Horizons | @Model.Name</title>
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body onload="tabsBase()">
+    <div class="transform-info">
+        <nav class="left-nav">
+            <button onclick="changeTabLeft('default')">Padrão</button>
+            <button onclick="changeTabLeft('transformed')">Transformado</button>
+        </nav>
+        <nav class="right-nav">
+            <button onclick="changeTabRight('speciality')">Especialidades</button>
+            <button onclick="changeTabRight('combat')">Combate</button>
+            <button onclick="changeTabRight('status')">Status</button>
+            <button onclick="changeTabRight('habilities')">Habilidades</button>
+            <button onclick="changeTabRight('info')">Informações</button>
+            <button class="config"><img src="@Assets[" images/cog.png"]"></button>
+            <button class="config"><img src="@Assets[" images/save.png"]" @onclick="() => EditCharacter()"></button>
+        </nav>
+    </div>
+
+    <div class="panels">
+        <div class="player-panel">
+
+            <div id="defaultTab" class="player-bars">
+                <h1>Vitalidade</h1>
+                <div class="bars">
+                    <div class="text-bar">
+                        <input type="number" class="input-left" value="@Model.CurrentVitality"
+                            @bind-currentvitality="@Model.CurrentVitality" @bind-currentvitality:event="oninput"
+                            @onchange="() => ChangeModel()">
+                        <h1>/</h1>
+                        <input type="number" class="input-right" value="@Model.Vitality"
+                            @bind-vitality="@Model.Vitality" @bind-vitality:event="oninput"
+                            @onchange="() => ChangeModel()">
+                    </div>
+                    <div class="life-bar"></div>
+                </div>
+
+                <h1>Vigor</h1>
+                <div class="bars">
+                    <div class="text-bar">
+                        <input type="number" class="input-left" value="@Model.CurrentVigor"
+                            @bind-currentvigor="@Model.CurrentVigor" @bind-currentvigor:event="oninput"
+                            @onchange="() => ChangeModel()">
+                        <h1>/</h1>
+                        <input type="number" class="input-right" value="@Model.Vigor" @bind-vigor="@Model.Vigor"
+                            @bind-vigor:event="oninput" @onchange="() => ChangeModel()">
+                    </div>
+                    <div class="vigor-bar"></div>
+                </div>
+
+                <h1>Energia</h1>
+                <div class="bars">
+                    <div class="text-bar">
+                        <input type="number" class="input-left" value="@Model.CurrentEnergyStats"
+                            @bind-currentenergystats="@Model.CurrentEnergyStats"
+                            @bind-currentenergystats:event="oninput" @onchange="() => ChangeModel()">
+                        <h1>/</h1>
+                        <input type="number" class="input-right" value="@Model.EnergyStats"
+                            @bind-energystats="@Model.EnergyStats" @bind-energystats:event="oninput"
+                            @onchange="() => ChangeModel()">
+                    </div>
+                    <div class="energy-bar"></div>
+                </div>
+
+                <h1>Sanidade</h1>
+                <div class="bars">
+                    <div class="text-bar">
+                        <input type="number" class="input-left" value="@Model.CurrentSanity"
+                            @bind-currentsanity="@Model.CurrentSanity" @bind-currentsanity:event="oninput"
+                            @onchange="() => ChangeModel()">
+                        <h1>/</h1>
+                        <input type="number" class="input-right" value="@Model.Sanity" @bind-sanity="@Model.Sanity"
+                            @bind-sanity:event="oninput" @onchange="() => ChangeModel()">
+                    </div>
+                    <div class="sanity-bar"></div>
+                </div>
+
+                <h1>Humanidade</h1>
+                <div class="bars">
+                    <div class="text-bar">
+                        <input type="number" class="input-left" value="@Model.CurrentHumanity"
+                            @bind-currenthumanity="@Model.CurrentHumanity" @bind-currenthumanity:event="oninput"
+                            @onchange="() => ChangeModel()">
+                        <h1>/</h1>
+                        <input type="number" class="input-right" value="@Model.Humanity"
+                            @bind-humanity="@Model.Humanity" @bind-humanity:event="oninput"
+                            @onchange="() => ChangeModel()">
+                    </div>
+                    <div class="humanity-bar"></div>
+                </div>
+            </div>
+
+            <div id="transformedTab" class="player-bars">
+                <h1>Vitalidade</h1>
+                <div class="bars">
+                    <div class="text-bar">
+                        <input type="number" class="input-left" value="@Model.CurrentVitality"
+                            @bind-currentvitality="@Model.CurrentVitality" @bind-currentvitality:event="oninput"
+                            @onchange="() => ChangeModel()">
+                        <h1>/</h1>
+                        <input type="number" class="input-right" value="">
+                    </div>
+                    <div class="transformed-bar"></div>
+                </div>
+
+                <h1>Vigor</h1>
+                <div class="bars">
+                    <div class="text-bar">
+                        <input type="number" class="input-left" value="@Model.CurrentVigor"
+                            @bind-currentvigor="@Model.CurrentVigor" @bind-currentvigor:event="oninput"
+                            @onchange="() => ChangeModel()">
+                        <h1>/</h1>
+                        <input type="number" class="input-right" value="">
+                    </div>
+                    <div class="transformed-bar"></div>
+                </div>
+
+                <h1>Energia</h1>
+                <div class="bars">
+                    <div class="text-bar">
+                        <input type="number" class="input-left" value="@Model.CurrentEnergyStats"
+                            @bind-currentenergystats="@Model.CurrentEnergyStats"
+                            @bind-currentenergystats:event="oninput" @onchange="() => ChangeModel()">
+                        <h1>/</h1>
+                        <input type="number" class="input-right" value="">
+                    </div>
+                    <div class="transformed-bar"></div>
+                </div>
+
+                <h1>Sanidade</h1>
+                <div class="bars">
+                    <div class="text-bar">
+                        <input type="number" class="input-left" value="@Model.CurrentSanity"
+                            @bind-currentsanity="@Model.CurrentSanity" @bind-currentsanity:event="oninput"
+                            @onchange="() => ChangeModel()">
+                        <h1>/</h1>
+                        <input type="number" class="input-right" value="">
+                    </div>
+                    <div class="transformed-bar"></div>
+                </div>
+
+                <h1>Humanidade</h1>
+                <div class="bars">
+                    <div class="text-bar">
+                        <input type="number" class="input-left" value="@Model.CurrentHumanity"
+                            @bind-currenthumanity="@Model.CurrentHumanity" @bind-currenthumanity:event="oninput"
+                            @onchange="() => ChangeModel()">
+                        <h1>/</h1>
+                        <input type="number" class="input-right" value="">
+                    </div>
+                    <div class="transformed-bar"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="player-status">
+        <div id="SplDiv">
+            <div class="sub-combat-div">
+                <div class="section">
+                    <img class="icons" src="@Assets[" images/StatsIcons/forca.png"]" alt="">
+                    <h1>(FOR) Força:
+                        <input type="number" class="data-input" value="@Model.Strength" @bind-strength="@Model.Strength"
+                            @bind-strength:event="oninput" @onchange="() => ChangeModel()">
+                    </h1>
+                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons" src="@Assets["
+                            images/roll.png"]" alt=""></button>
+                </div>
+
+                <div class="section">
+                    <img class="icons" src="@Assets[" images/StatsIcons/dex.png"]" alt="">
+                    <h1>(DES) Destreza: @if(edit){
+                        <input type="number" class="data-input" value="@Model.Dexterity" @bind-dex="@Model.Dexterity"
+                            @bind-dex:event="oninput">
+                        }
+                    </h1>
+                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons" src="@Assets["
+                            images/roll.png"]" alt=""></button>
+                </div>
+
+                <div class="section">
+                    <img class="icons" src="@Assets[" images/StatsIcons/int.png"]" alt="">
+                    <h1>(INT) Inteligência: @if(edit){
+                        <input type="number" class="data-input" value="@Model.Inteligency"
+                            @bind-int="@Model.Inteligency" @bind-int:event="oninput">
+                        }
+                    </h1>
+                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons" src="@Assets["
+                            images/roll.png"]" alt=""></button>
+                </div>
+
+                <div class="section">
+                    <img class="icons" src="@Assets[" images/StatsIcons/ene.png"]" alt="">
+                    <h1>(ENE) Energia: @if(edit){
+                        <input type="number" class="data-input" value="@Model.EnergyModifier"
+                            @bind-ene="@Model.EnergyModifier" @bind-ene:event="oninput">
+                        }
+                    </h1>
+                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons" src="@Assets["
+                            images/roll.png"]" alt=""></button>
+                </div>
+
+                <div class="section">
+                    <img class="icons" src="@Assets[" images/StatsIcons/car.png"]" alt="">
+                    <h1>(CAR) Carisma: @if(edit){
+                        <input type="number" class="data-input" value="@Model.Charisma" @bind-charisma="@Model.Charisma"
+                            @bind-charisma:event="oninput" @onchange="() => ChangeModel()">
+                        }
+                    </h1>
+                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons" src="@Assets["
+                            images/roll.png"]" alt=""></button>
+                </div>
+
+                <div class="section">
+                    <img class="icons" src="@Assets[" images/StatsIcons/von.png"]" alt="">
+                    <h1>(VON) Vontade: @if(edit){
+                        <input type="number" class="data-input" value="@Model.Will" @bind-will="@Model.Will"
+                            @bind-will:event="oninput" @onchange="() => ChangeModel()">
+                        }
+                    </h1>
+                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons" src="@Assets["
+                            images/roll.png"]" alt=""></button>
+                </div>
+
+                <div class="section">
+                    <img class="icons" src="@Assets[" images/StatsIcons/luck.png"]" alt="">
+                    <h1>(SOR) Sorte: @if(edit){
+                        <input type="number" class="data-input" value="@Model.Lucky" @bind-luck="@Model.Lucky"
+                            @bind-luck:event="oninput" @onchange="() => ChangeModel()">
+                        }
+                    </h1>
+                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons" src="@Assets["
+                            images/roll.png"]" alt=""></button>
+                </div>
+
+                @if (@Model.Carrier == "beast" || @Model.Carrier == "spirit")
+                {
+                <div class="section">
+                    <img class="icons" src="@Assets[" images/StatsIcons/afi.png"]" alt="">
+                    <h1>(AFI) Afinidade: @if(edit){
+                        <input @bind-afi="@Model.Afinnity" @bind-afi:event="oninput" @onchange="() => ChangeModel()"
+                            type="number" class="data-input" value="@Model.Afinnity">
+                        }
+                    </h1>
+                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons" src="@Assets["
+                            images/roll.png"]" alt=""></button>
+                </div>
+                }
+            </div>
+
+        </div>
+
+
+
+        <div id="CombatDiv">
+            <div class="sub-combat-div">
+                <div class="section">
+                    <img class="icons" src="@Assets[" images/StatsIcons/ataque.png"]" alt="">
+                    <h1>(ATQ) Ataque: @attack </h1>
+                </div>
+
+                <div class="section">
+                    <img class="icons" src="@Assets[" images/StatsIcons/ataque.png"]" alt="">
+                    <h1>(ATQ ESP) Ataque Especial: </h1>
+                </div>
+
+                <div class="section">
+                    <img class="icons" src="@Assets[" images/StatsIcons/defesa.png"]" alt="">
+                    <h1>(DEF) Defesa: @Model.Strength</h1>
+                </div>
+
+                <div class="section">
+                    <img class="icons" src="@Assets[" images/StatsIcons/velocidade.png"]" alt="">
+                    <h1>(VEL) Velocidade: @Model.Dexterity</h1>
+                </div>
+
+                <div class="section">
+                    <img class="icons" src="@Assets[" images/StatsIcons/fen.png"]" alt="">
+                    <h1>(FEN) Efeito Negativo:
+                        @if (@Model.SubClass1 == "Debuffer" || @Model.SubClass2 == "Debuffer")
+                        {
+                        @Model.EnergyModifier
+                        }
+                    </h1>
+                </div>
+
+                <div class="section">
+                    <img class="icons" src="@Assets[" images/StatsIcons/fep.png"]" alt="">
+                    <h1>(FEP) Efeito Positivo:
+                        @if (@Model.SubClass1 == "Buffer" || @Model.SubClass2 == "Buffer")
+                        {
+                        @Model.EnergyModifier
+                        }
+                        <br>
+                    </h1>
+                </div>
+
+                <div class="section">
+                    <img class="icons" src="@Assets[" images/StatsIcons/res.png"]" alt="">
+                    <h1>(RES) Resistencia: @Model.Will <br></h1>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="stats-div" id="StatsDiv">
+            <div class="sub-stats-div">
+                <div class="positive-display">
+                    <h1>Aqui é onde você poderá ver seus Efeitos de Status Positivos...</h1>
+                </div>
+                <div class="negative-display">
+                    <h1>Aqui é onde você poderá ver seus Efeitos de Status Negativos...</h1>
+                </div>
+                <div class="global-display">
+                    <h1>Aqui é onde você poderá ver seus Efeitos de Status Globais...</h1>
+                </div>
+                <div class="friends-display">
+                    <h1>Aqui é onde você poderá ver seus Efeitos de Status gerados por Companheiros...</h1>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="HabDiv">
+            <button class="create" @onclick='() => ActiveHabCreation(true)'>Criar habilidade</button>
+            <div class="sub-habilities-div">
+                @foreach (var hab in amogus)
+                {
+                <h1>@hab.Name | @hab.Description | @hab.Dices</h1>
+                <button class="roll-dice" @onclick="(() => ActivePopup(1, hab.Dices))"><img class="icons" src="@Assets["
+                        images/roll.png"]" alt=""></button>
+                }
+            </div>
+        </div>
+
+
+
+        <div class="info-div" id="InfoDiv">
+            <div class="input-box" id="input-box">
+
+                <textarea @bind-apperence="@Model.Apperence" @bind-apperence:event="oninput"
+                    @onchange="() => ChangeModel()" class="Info"
+                    placeholder="Descreva a aparencia do seu personagem aqui...">@Model.Apperence</textarea>
+
+                <textarea @bind-personality="@Model.Personality" @bind-personality:event="oninput"
+                    @onchange="() => ChangeModel()" class="Info"
+                    placeholder="Descreva a personalidade do seu personagem aqui...">@Model.Personality</textarea>
+
+                <textarea @bind-notes="@Model.Notes" @bind-notes:event="oninput" @onchange="() => ChangeModel()"
+                    class="Info" placeholder="Escreva suas anotações aqui...">@Model.Notes</textarea>
+
+                <textarea @bind-lore="@Model.Lore" @bind-lore:event="oninput" @onchange="() => ChangeModel()"
+                    class="Info" placeholder="Descreva a Lore do seu personagem aqui...">@Model.Lore</textarea>
+
+                <textarea @bind-info="@Model.Curiosity" @bind-info:event="oninput" @onchange="() => ChangeModel()"
+                    class="Info"
+                    placeholder="Descreva as curiosidades do seu personagem aqui...">@Model.Curiosity</textarea>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="../js/characterPage.js"></script>
+
+</html>

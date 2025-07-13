@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/characterList.css">
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <title>Origins New Horizons | Fichas</title>
+</head>
+
+<body>
+
+    <div id="newSheet">
+        <a href="/characterCreate/" target="_parent">
+            <button id="newSheetButton">Nova Ficha</button>
+        </a>
+    </div>
+
+    <div id="sheets">
+        <div class="sheetContainer">
+            <img class="userImg" src="../images/Sample_User_Icon.png">
+            <p>
+                Nome: @Model.Name <br>
+                Level: @Model.Level
+            </p>
+
+            <a href="/character/@Model.Id" target="_parent">
+                <button id="editButton">Editar</button>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
