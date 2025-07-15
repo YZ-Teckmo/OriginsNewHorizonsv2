@@ -1,15 +1,28 @@
 <html>
 
+<nav>
+    <a href="characterList.html" target="_parent"><button>Fichas</button></a>
+    <button>Informações</button>
+    <button>Combate</button>
+</nav>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewpoint" content="with=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/characterPage.css">
-    <title>Origins New Horizons | @Model.Name</title>
+    <title>Origins New Horizons | Teckmo</title>
     <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body onload="tabsBase()">
+<style>
+    :root {
+        --playerColor:
+            #ffffff;
+    }
+</style>
+
+<body onload="tabsBase(), loadPlayerClass()">
     <div class="transform-info">
         <nav class="left-nav">
             <button onclick="changeTabLeft('default')">Padrão</button>
@@ -29,13 +42,42 @@
     <div class="panels">
         <div class="player-panel">
 
+            <div id="defaultTab" class="sub-player-panel">
+                <div class="player-image">
+                    <input class="user-img" type="image" src="../assets/images/plusv2.png" alt="Submit">
+                </div>
+                <div class="player-info">
+                    <img id="playerClass" class="player-class" src="" />
+                    <p>
+                        Nome: Teckmo <br>
+                        Level:
+                        <input type="number" value="@Model.Level" class="data-input" @bind-level="@Model.Level"
+                            @bind-level:event="oninput" @onchange="() => ChangeModel()">
+                        <br>
+                        Mentor: Teckmo<br>
+                    </p>
+                </div>
+            </div>
+
+            <div id="transformedTab" class="sub-player-panel">
+                <div class="player-image">
+                    <input class="user-img" type="image" src="../assets/images/plusv2.png" alt="Submit">
+                </div>
+                <div class="player-info">
+                    <img id="playerClass" class="player-class" src="" />
+                    <p>
+                        Nome: @Model.TransformedName <br>
+                        Level: @Model.Level<br>
+                        Mentor: @Model.Mentor<br>
+                    </p>
+                </div>
+            </div>
+
             <div id="defaultTab" class="player-bars">
                 <h1>Vitalidade</h1>
                 <div class="bars">
                     <div class="text-bar">
-                        <input type="number" class="input-left" value="@Model.CurrentVitality"
-                            @bind-currentvitality="@Model.CurrentVitality" @bind-currentvitality:event="oninput"
-                            @onchange="() => ChangeModel()">
+                        <input type="number" class="input-left">
                         <h1>/</h1>
                         <input type="number" class="input-right" value="@Model.Vitality"
                             @bind-vitality="@Model.Vitality" @bind-vitality:event="oninput"
@@ -170,94 +212,82 @@
         <div id="SplDiv">
             <div class="sub-combat-div">
                 <div class="section">
-                    <img class="icons" src="@Assets[" images/StatsIcons/forca.png"]" alt="">
-                    <h1>(FOR) Força:
-                        <input type="number" class="data-input" value="@Model.Strength" @bind-strength="@Model.Strength"
-                            @bind-strength:event="oninput" @onchange="() => ChangeModel()">
+                    <img class="icons" src="../assets/images/StatsIcons/forca.png" alt="">
+                    <h1>(FOR) Força: <input type="number" class="data-input">
                     </h1>
-                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons" src="@Assets["
-                            images/roll.png"]" alt=""></button>
+                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons"
+                            src="../assets/images/roll.png" alt=""></button>
                 </div>
 
                 <div class="section">
-                    <img class="icons" src="@Assets[" images/StatsIcons/dex.png"]" alt="">
-                    <h1>(DES) Destreza: @if(edit){
+                    <img class="icons" src="../assets/images/StatsIcons/dex.png" alt="">
+                    <h1>(DES) Destreza:
                         <input type="number" class="data-input" value="@Model.Dexterity" @bind-dex="@Model.Dexterity"
                             @bind-dex:event="oninput">
-                        }
                     </h1>
-                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons" src="@Assets["
-                            images/roll.png"]" alt=""></button>
+                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons"
+                            src="../assets/images/roll.png" alt=""></button>
                 </div>
 
                 <div class="section">
-                    <img class="icons" src="@Assets[" images/StatsIcons/int.png"]" alt="">
-                    <h1>(INT) Inteligência: @if(edit){
+                    <img class="icons" src="../assets/images/StatsIcons/int.png" alt="">
+                    <h1>(INT) Inteligência:
                         <input type="number" class="data-input" value="@Model.Inteligency"
                             @bind-int="@Model.Inteligency" @bind-int:event="oninput">
-                        }
                     </h1>
-                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons" src="@Assets["
-                            images/roll.png"]" alt=""></button>
+                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons"
+                            src="../assets/images/roll.png" alt=""></button>
                 </div>
 
                 <div class="section">
-                    <img class="icons" src="@Assets[" images/StatsIcons/ene.png"]" alt="">
-                    <h1>(ENE) Energia: @if(edit){
+                    <img class="icons" src="../assets/images/StatsIcons/ene.png" alt="">
+                    <h1>(ENE) Energia:
                         <input type="number" class="data-input" value="@Model.EnergyModifier"
                             @bind-ene="@Model.EnergyModifier" @bind-ene:event="oninput">
-                        }
                     </h1>
-                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons" src="@Assets["
-                            images/roll.png"]" alt=""></button>
+                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons"
+                            src="../assets/images/roll.png" alt=""></button>
                 </div>
 
                 <div class="section">
-                    <img class="icons" src="@Assets[" images/StatsIcons/car.png"]" alt="">
-                    <h1>(CAR) Carisma: @if(edit){
+                    <img class="icons" src="../assets/images/StatsIcons/car.png" alt="">
+                    <h1>(CAR) Carisma:
                         <input type="number" class="data-input" value="@Model.Charisma" @bind-charisma="@Model.Charisma"
                             @bind-charisma:event="oninput" @onchange="() => ChangeModel()">
-                        }
                     </h1>
-                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons" src="@Assets["
-                            images/roll.png"]" alt=""></button>
+                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons"
+                            src="../assets/images/roll.png" alt=""></button>
                 </div>
 
                 <div class="section">
-                    <img class="icons" src="@Assets[" images/StatsIcons/von.png"]" alt="">
-                    <h1>(VON) Vontade: @if(edit){
+                    <img class="icons" src="../assets/images/StatsIcons/von.png" alt="">
+                    <h1>(VON) Vontade:
                         <input type="number" class="data-input" value="@Model.Will" @bind-will="@Model.Will"
                             @bind-will:event="oninput" @onchange="() => ChangeModel()">
-                        }
                     </h1>
-                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons" src="@Assets["
-                            images/roll.png"]" alt=""></button>
+                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons"
+                            src="../assets/images/roll.png" alt=""></button>
                 </div>
 
                 <div class="section">
-                    <img class="icons" src="@Assets[" images/StatsIcons/luck.png"]" alt="">
-                    <h1>(SOR) Sorte: @if(edit){
+                    <img class="icons" src="../assets/images/StatsIcons/luck.png" alt="">
+                    <h1>(SOR) Sorte:
                         <input type="number" class="data-input" value="@Model.Lucky" @bind-luck="@Model.Lucky"
                             @bind-luck:event="oninput" @onchange="() => ChangeModel()">
-                        }
                     </h1>
-                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons" src="@Assets["
-                            images/roll.png"]" alt=""></button>
+                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons"
+                            src="../assets/images/roll.png" alt=""></button>
                 </div>
 
-                @if (@Model.Carrier == "beast" || @Model.Carrier == "spirit")
-                {
                 <div class="section">
-                    <img class="icons" src="@Assets[" images/StatsIcons/afi.png"]" alt="">
-                    <h1>(AFI) Afinidade: @if(edit){
+                    <img class="icons" src="../assets/images/StatsIcons/afi.png" alt="">
+                    <h1>(AFI) Afinidade:
                         <input @bind-afi="@Model.Afinnity" @bind-afi:event="oninput" @onchange="() => ChangeModel()"
                             type="number" class="data-input" value="@Model.Afinnity">
-                        }
                     </h1>
-                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons" src="@Assets["
-                            images/roll.png"]" alt=""></button>
+                    <button class="roll-dice" @onclick="(() => ActivePopup(0))"><img class="icons"
+                            src="../assets/images/roll.png" alt=""></button>
                 </div>
-                }
             </div>
 
         </div>
@@ -267,49 +297,41 @@
         <div id="CombatDiv">
             <div class="sub-combat-div">
                 <div class="section">
-                    <img class="icons" src="@Assets[" images/StatsIcons/ataque.png"]" alt="">
-                    <h1>(ATQ) Ataque: @attack </h1>
+                    <img class="icons" src="../assets/images/StatsIcons/ataque.png" alt="">
+                    <h1>(ATQ) Ataque: </h1>
                 </div>
 
                 <div class="section">
-                    <img class="icons" src="@Assets[" images/StatsIcons/ataque.png"]" alt="">
+                    <img class="icons" src="../assets/images/StatsIcons/ataque.png" alt="">
                     <h1>(ATQ ESP) Ataque Especial: </h1>
                 </div>
 
                 <div class="section">
-                    <img class="icons" src="@Assets[" images/StatsIcons/defesa.png"]" alt="">
-                    <h1>(DEF) Defesa: @Model.Strength</h1>
+                    <img class="icons" src="../assets/images/StatsIcons/defesa.png" alt="">
+                    <h1>(DEF) Defesa: </h1>
                 </div>
 
                 <div class="section">
-                    <img class="icons" src="@Assets[" images/StatsIcons/velocidade.png"]" alt="">
-                    <h1>(VEL) Velocidade: @Model.Dexterity</h1>
+                    <img class="icons" src="../assets/images/StatsIcons/velocidade.png" alt="">
+                    <h1>(VEL) Velocidade: </h1>
                 </div>
 
                 <div class="section">
-                    <img class="icons" src="@Assets[" images/StatsIcons/fen.png"]" alt="">
+                    <img class="icons" src="../assets/images/StatsIcons/fen.png" alt="">
                     <h1>(FEN) Efeito Negativo:
-                        @if (@Model.SubClass1 == "Debuffer" || @Model.SubClass2 == "Debuffer")
-                        {
-                        @Model.EnergyModifier
-                        }
                     </h1>
                 </div>
 
                 <div class="section">
-                    <img class="icons" src="@Assets[" images/StatsIcons/fep.png"]" alt="">
+                    <img class="icons" src="../assets/images/StatsIcons/fep.png" alt="">
                     <h1>(FEP) Efeito Positivo:
-                        @if (@Model.SubClass1 == "Buffer" || @Model.SubClass2 == "Buffer")
-                        {
-                        @Model.EnergyModifier
-                        }
                         <br>
                     </h1>
                 </div>
 
                 <div class="section">
-                    <img class="icons" src="@Assets[" images/StatsIcons/res.png"]" alt="">
-                    <h1>(RES) Resistencia: @Model.Will <br></h1>
+                    <img class="icons" src="../assets/images/StatsIcons/res.png" alt="">
+                    <h1>(RES) Resistencia: <br></h1>
                 </div>
             </div>
         </div>

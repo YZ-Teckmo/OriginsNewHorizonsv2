@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+<nav>
+    <a href="characterList.html" target="_parent"><button>Fichas</button></a>
+    <button>Informações</button>
+    <a href="combatPage.html" target="_parent"><button>Combate</button></a>
+</nav>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,10 +25,10 @@
 
     <div id="sheets">
         <div class="sheetContainer">
-            <img class="userImg" src="../images/Sample_User_Icon.png">
+            <img class="userImg" src="../assets/images/Sample_User_Icon.png">
             <p>
-                Nome: @Model.Name <br>
-                Level: @Model.Level
+                Nome: none <br>
+                Level: none
             </p>
 
             <a href="/character/@Model.Id" target="_parent">
