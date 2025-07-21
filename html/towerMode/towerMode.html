@@ -1,0 +1,52 @@
+<html>
+
+<nav>
+    <a href="../characterList.html" target="_parent"><button>Fichas</button></a>
+    <button>Informações</button>
+    <a href="../combatPage.html" target="_parent"><button>Combate</button></a>
+</nav>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/towerMode/towerMode.css">
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <title>Origins New Horizons | Modo Torre início</title>
+</head>
+
+<body>
+
+    <div id="initPage" class="main-text">
+        <h1>Bem vindo ao Modo Torre do RPG Origins New Horizons!</h1>
+        <h2>
+            O modo torre é um minigame interativo de estilo roguelike. Nele você começa nível 1 e vai progredindo por
+            areas
+            aleatórias até enfrentrar o chefe final de cada sessão. Quanto mais tempo jogando mais desafiador o jogo
+            ficará.
+            Pronto pra começar?
+        </h2>
+
+        <button class="start-button" onclick="skipTab('choice')">COMEÇAR</button>
+    </div>
+
+    <div id="choicePage" class="character-choice">
+        <div id="sheets">
+            <div class="sheetContainer">
+                <img class="userImg" src="../../assets/images/Sample_User_Icon.png">
+                <p>
+                    Nome: none <br>
+                    Level: none
+                </p>
+
+                <a href="/character/@Model.Id" target="_parent">
+                    <button id="editButton">Selecionar</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="../../js/towerMode/towerModeMain.js"></script>
+
+</html>
