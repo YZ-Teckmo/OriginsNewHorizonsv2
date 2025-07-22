@@ -46,7 +46,9 @@ createDB: function () {
     afinidade INTEGER,
     sorte INTEGER,
     equipamentos TEXT,
-    habilidades TEXT
+    informacao TEXT,
+    habilidades TEXT,
+    status TEXT
     )`, (err) => {
     if (err) {
         console.error(err.message);
