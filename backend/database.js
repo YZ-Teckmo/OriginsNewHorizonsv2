@@ -15,6 +15,9 @@ createDB: function () {
     db.run(`CREATE TABLE IF NOT EXISTS character (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT,
+    cor TEXT,
+    nomeTransformado TEXT,
+    corTransformado TEXT,
     nivel INTEGER,
     classe TEXT,
     subclasse1 TEXT,
@@ -37,8 +40,10 @@ createDB: function () {
     forca INTEGER,
     destreza INTEGER,
     inteligencia INTEGER,
+    energiaSpl INTEGER,
     carisma INTEGER,
     vontade INTEGER,
+    afinidade INTEGER,
     sorte INTEGER,
     equipamentos TEXT,
     habilidades TEXT
