@@ -34,8 +34,7 @@
             <button onclick="changeTabRight('status')">Status</button>
             <button onclick="changeTabRight('habilities')">Habilidades</button>
             <button onclick="changeTabRight('info')">Informações</button>
-            <button class="config"><img src="@Assets[" images/cog.png"]"></button>
-            <button class="config"><img src="@Assets[" images/save.png"]" @onclick="() => EditCharacter()"></button>
+            <button onclick="updateCharacter()" class="config"><img src="../assets/images/save.png"></button>
         </nav>
     </div>
 
@@ -330,7 +329,7 @@
 
                 </div>
                 <button class="roll-dice">
-                    <img class="icons" src="images/roll.png">
+                    <img class="icons" src="../assets/images/roll.png">
                 </button>
             </div>
         </div>

@@ -8,9 +8,77 @@
 </head>
 
 <body>
-    <input type="text" placeholder="Nome" id="nome"> <br>
-    <input type="number" placeholder="Nivel" id="nivel"> <br>
+    <div class="form-as-div">
+    <label>Info Básica</label>
+    <input type="text" placeholder="Nome" id="nome"> 
+    <input type="number" placeholder="Nivel" id="nivel">
+    <input type="color" id="cor">
+    
+    <select id="mentor">
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+    </select>
+
+    <input type="number" id="maestria" placeholder="Maestria">
+
+    <select id="classe">
+        <option value="dps">DPS</option>
+        <option value="tank">Tank</option>
+        <option value="support">Suporte</option>
+    </select>
+    
+    <select id="subclasse1">
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+    </select>
+
+    <select id="subclasse2">
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+    </select>
+
+    <select id="raca">
+        <optgroup>Raça</optgroup>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+    </select>
+
+    <select id="nacionalidade">
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+    </select>
+
+    <select id="tipo-energia">
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+    </select>
+
+    <label>Stats</label>
+    <input type="number" id="vitalidade" placeholder="vitalidade">
+    <input type="number" id="vigor" placeholder="vigor">
+    <input type="number" id="energia" placeholder="energia">
+    <input type="number" id="sanidade" placeholder="sanidade">
+    <input type="number" id="humanidade" placeholder="humanidade">
+
+    <label>Atributos</label>
+    <input type="number" id="forca" placeholder="Força">
+    <input type="number" id="destreza" placeholder="Destreza">
+    <input type="number" id="inteligencia" placeholder="Inteligencia">
+    <input type="number" id="energia" placeholder="Energia">
+    <input type="number" id="carisma" placeholder="Carisma">
+    <input type="number" id="vontade" placeholder="Vontade">
+    <input type="number" id="vitalidade" placeholder="Afinidade">
+    <input type="number" id="sorte" placeholder="Sorte">
+
     <button id="btn-submit">Enviar</button>
+
+    </div>
 </body>
 
 <script src="debugCharacterPost.js"></script>

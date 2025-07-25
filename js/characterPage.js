@@ -95,9 +95,7 @@ window.addEventListener("DOMContentLoaded", async () => {
             charFep.textContent = "(FEP) Efeito Positivo: " + charEnerSpl.value
             charRes.textContent = "(RES) Resistencia: " + charWill.value
 
-            console.log(character.informacao)
             InfoJsonRead(character.informacao)
-
         })
 })
 
@@ -197,8 +195,59 @@ function InfoJsonRead(InfoText){
     charCuriosity.value = obj.curiosidade
 }
 
-function InfoSaveOnDatabase(){
-    alert("TODO: InfoSaveOnDatabase")
+
+function InfoConvertToJson(){
+    return {
+        aparencia: charAppearence.value,
+        personalidade: charPersonality.value,
+        anotacao: charAnnotations.value,
+        lore: charLore.value,
+        curiosidade: charCuriosity.value,
+    }
 }
 
+async function updateCharacter() {
+    const url = "http://localhost:4000/api/character/update/1"
 
+    await fetch(url, {
+        method: 'PUT',  
+        headers: {"Content-Type": "application/json"}, 
+        body: JSON.stringify({
+            nome: charName.value,
+            nomeTransformado: charNameTransformed.value,
+            cor: "",
+            corTransformado: "",
+            nivel: parseInt(charLevel[0].value),
+            classe: "",
+            subclasse1: "",
+            subclasse2: "",
+            raca: "",
+            nacionalidade: "",
+            tipoEnergia: "",
+            vitalidade: charVit.value,
+            vitalidadeMax: charVitMax.value,
+            vigor: charVig.value,
+            vigorMax: charVigMax.value,
+            energia: charEner.value,
+            energiaMax: charEnerMax.value,
+            sanidade: charSanity.value,
+            sanidadeMax: charSanityMax.value,
+            humanidade: charHumanity.value,
+            humanidadeMax: charHumanityMax.value,
+            mentor: charMentor.value,
+            maestria: 0,
+            forca: charStrength.value,
+            destreza: charDex.value,
+            inteligencia: charInt.value,
+            energiaSpl: charEnerSpl.value,
+            carisma: charCharisma.value,
+            vontade: charWill.value,
+            afinidade: charAfinity.value,
+            sorte: charLuck.value,
+            equipamentos: "",
+            informacao: JSON.stringify(InfoConvertToJson()),
+            habilidades: "",
+            status: ""
+        })
+    })
+}

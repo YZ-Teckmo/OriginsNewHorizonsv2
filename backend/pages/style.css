@@ -19,3 +19,10 @@ body {
 .stats-container > p {
     margin-left: .5em;
 }
+
+.form-as-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
