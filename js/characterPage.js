@@ -175,17 +175,6 @@ function loadPlayerClass() {
     }
 }
 
-
-/*habilidades{
- "habs": [
-	{
-	 "nome": "",
-	 "descricao": "",
-	 "dices": ""
-	}
-  ]
-}*/
-
 function InfoJsonRead(InfoText){
     const obj = JSON.parse(InfoText)
     charAppearence.value = obj.aparencia

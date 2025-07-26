@@ -110,6 +110,38 @@ app.put('/api/character/update/:id', (req, res) => {
     db.close()
 })
 
+app.put('/api/character/updateHability/:id', (req, res) => {
+    let db = database.createDbContext()
+    
+    let queryPut = `
+        UPDATE
+            character
+        SET
+            habilidades=?
+        WHERE
+            id=?
+    ` 
+    
+    console.log(req.body.habs)
+
+    db.all(queryPut, [JSON.stringify(req.body.habs), req.params.id])
+    
+    let queryGet = `
+    SELECT
+        habilidades
+    FROM 
+        character
+    WHERE
+        id=?
+    `
+
+    let habilities = db.all(queryGet, [req.params.id], async (res, rows) => {
+        console.log(rows[0])
+    }) 
+
+    res.send('ok')
+
+})
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
