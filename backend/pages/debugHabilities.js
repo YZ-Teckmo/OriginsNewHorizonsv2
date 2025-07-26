@@ -23,7 +23,7 @@ const url = "http://localhost:4000/api/character/get/1"
             let btn = document.createElement('button')
             btn.textContent = "Rodar"
             btn.addEventListener('click', () => {
-                let result = rollDices(hab.dices)
+                let result = rollDicesFromString(hab.dices)
                 console.log(result)
             })
             

@@ -23,7 +23,7 @@ function rollDicesFromString(dicesString) {
 
     let buffer = ""
     dices.forEach(element => {
-        if (typeof(element) === typeof(0) || element === '+' || element === '-' || element === '*' || element === '/'  || element === '(' || element === ')'){
+        if (!isNaN(element) || element === '+' || element === '-' || element === '*' || element === '/'  || element === '(' || element === ')'){
             buffer = buffer+element
         }
     });
